@@ -29,4 +29,4 @@ def login():
     flash('Invalid username or password')
     
     title = 'login'
-    return render_template('auth/login.html',login_form=login_form,title=title)
+    return render_template('auth/login.html',login_form=login_form,title='login')
