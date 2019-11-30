@@ -1,7 +1,9 @@
 import os
 
 class Config:
-    pass
+    # pass
+    BASE_URL='http://quotes.stormconsultancy.co.uk/random.json'
+    
     
 class ProdConfig(Config):
     pass
