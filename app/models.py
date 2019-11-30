@@ -23,3 +23,11 @@ class User(db.Model):
     
     def __repr__(self):
         return f'User {self.username}'
+    
+class Quote:
+    '''
+    class that defines instance of quotes 
+    '''
+    def __init__(self,author,quote):
+        self.author=aurhor
+        self.quote=quote
