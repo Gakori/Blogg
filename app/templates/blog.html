@@ -1,27 +1,25 @@
 {% extends 'base.html %}
 
-<!-- {% import 'bootstrap/wtf.html' as wtf%} -->
+{% import 'bootstrap/wtf.html' as wtf%}
 
 {% block content %}
 
 <div class="container">
-    <div class="row">
-    <h3>{{blog.blog_title}}</h3>
-    <hr>
-    <p>{{blog.blog_content}}</p>
-    <p>Posted on {{date}} by {{blog.user.username|capitalize}}</p>
-</div>
-
-<div class="row">
-    <h4>Comments</h4>
-    <hr>
+  <div class="row">
     {% if current_user.is_authenticated %}
-    {{ wtf.quick_form(comment_form) }}
-    {% endif %}
-    {{macro.displayComments(comments)}}
-    </div>
+    <a href="{{url_-for('main.new_blog')}}">add blog</a>
+    {% else %}
+
+    <a href="{{url_-for('auth.login')}}">login first</a>
+  </div>
+
+  <div class="blogs">
+    {% if blogs %} {% for blog in blogs %}
+    <p>title: {{blog.title}}</p>
+    <p>{{blog.content}}</p>
+    <p>{{blog.posted_on}}</p>
+    <p>{{blog.posted_by:}}</p>
+  </div>
 </div>
 
 {% endblock content %}
-
-
