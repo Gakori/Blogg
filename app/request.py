@@ -1,25 +1,32 @@
 # import urllib.request,json
-# from .models import Quote
+from .models import Quote
+import  requests
 
-# base_url = None
+base_url = None
 
-# def configure_request(app):
-#     global base_url
+def configure_request(app):
+    global base_url
     
-#     base_url = app.config['BASE_URL']
+    base_url = app.config['BASE_URL']
 
-# def get_quotes():
-#     '''
-#     function that gets the json response to url request
-#     '''
+def get_quotes():
+    '''
+    function that gets the json response to url request
+    '''
 
-#     with urllib.request.urlopen(base_url) as url:
-#         data=url.read()
-#         response=json.loads(data)
+    # with urllib.request.urlopen(base_url) as url:
+    #     data=url.read()
+    #     response=json.loads(data)
         
-#         results=process_quote(response)
-        
-#     return results
+    #     results=process_quote(response)
+    #     print('results')
+    
+    data = requests.get('http://quotes.stormconsultancy.co.uk/random.json')
+    response = data.json()
+    results = response
+    print(results)
+
+    return results
 
 # def process_quote(item):
 #     '''

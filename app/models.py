@@ -22,8 +22,6 @@ class User(UserMixin,db.Model):
     
     blogs = db.relationship('Blog',backref = 'user', lazy='dynamic')
     
-    comments = db.relationship('Comment',backref = 'user',lazy='dynamic')
-    
     
     @property
     def password(self):
@@ -44,7 +42,7 @@ class Quote:
     class that defines instance of quotes 
     '''
     def __init__(self,author,quote):
-        self.author=aurhor
+        self.author=author
         self.quote=quote
         
 class Blog(db.Model):
@@ -56,6 +54,7 @@ class Blog(db.Model):
     category = db.Column(db.String)
     posted = db.Column(db.DateTime,default=datetime.utcnow)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    user_name=db.Column(db.String(255))
     
     comments = db.relationship('Comment' , backref= 'blog_id', lazy='dynamic')
     
@@ -80,7 +79,7 @@ class Comment(db.Model):
         
     id = db.Column(db.Integer,primary_key = True)
     comment = db.Column(db.String(1000))
-    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    username=db.Column(db.String(255))
     blog = db.Column(db.Integer,db.ForeignKey("blogs.id"))
         
     def save_comment(self):

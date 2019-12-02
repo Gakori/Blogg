@@ -1,25 +1,30 @@
-{% extends 'base.html %}
+{% extends 'base.html' %}
 
-{% import 'bootstrap/wtf.html' as wtf%}
+{% block styles %}
+{{ super () }}
+<link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Handlee&display=swap" rel="stylesheet">
+
+{% endblock %}
 
 {% block content %}
-
-<div class="container">
+<div class="container-1">
   <div class="row">
-    {% if current_user.is_authenticated %}
-    <a href="{{url_-for('main.new_blog')}}">add blog</a>
-    {% else %}
+    <div class="col-md-4">
+      <div class="well well-lg">
 
-    <a href="{{url_-for('auth.login')}}">login first</a>
+    {% for blog in blogs %}
+      <h2 class="title" style="font-size:50px ; font-family: 'Cinzel', serif;">{{blog.blog_title}}</h2>
+      <p class="content" style="font-size: 20px; font-family: 'Handlee', cursive;">{{blog.blog_content}}</p>
+      <p class="posted" style="font-size: 15px;">Posted by {{blog.user.username|capitalize}}</p>
+      <a href="/blog/comment/{{blog.id}}">View comments</a>
+      <a href="/blog/Delete/{{blog.id}}" >Delete blog</a>
+    {% endfor %} 
+  </div>
+  </div> 
   </div>
 
-  <div class="blogs">
-    {% if blogs %} {% for blog in blogs %}
-    <p>title: {{blog.title}}</p>
-    <p>{{blog.content}}</p>
-    <p>{{blog.posted_on}}</p>
-    <p>{{blog.posted_by:}}</p>
-  </div>
 </div>
 
 {% endblock content %}

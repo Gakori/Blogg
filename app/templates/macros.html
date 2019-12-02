@@ -1,9 +1,10 @@
 {% macro displayBlog(blog_list) %}
+
 {% for blog in Blogs_list %}
 
 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 review-card">
     <div class="well wee-lg">
-        <h4>{{blog.blog_title}}</h4>
+        <h4 class="blogt" style="text-align: center;">{{blog.blog_title}}</h4>
         <p>{{blog.blog_content| truncate(100)}}</p>
         <p>Written by:{{blog.user.username}} <a href="/blog/{{blog.id}}" class="btn btn-primary pull-right">comment</a></p>
     </div>
@@ -14,8 +15,13 @@
 {%macro displayComments(comments_list)%}
 {%for comment in comments_list%}
 <div class="col-md-12">
-        <h5>{{comment.user.username}}</h5>
-        <p>{{comment.comment}}</p>
-</div>
+        <!-- <h5>{{comment.username}}</h5> -->
+        <div class="coform">
+                <div class="well well-sm" style="width: 30%; margin-left: 300px;">
+        <p class="comment" style="text-align: center;">{{comment.comment}}</p>
+    </div>
+    </div>
+    </div>
+
 {%endfor%}
 {%endmacro%}

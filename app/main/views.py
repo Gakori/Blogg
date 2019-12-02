@@ -3,7 +3,7 @@ from . import main
 from flask_login import login_required,current_user
 from app import db
 from app.main import main
-# from ..request import get_quotes
+from ..request import get_quotes
 from .forms import CommentForm,BlogForm,UpdateProfile
 from ..models import User,Blog,Comment
 import datetime
@@ -14,16 +14,17 @@ def index():
     '''
     view root page function that returns index and its data 
     '''
-    blogs = Blog.query.all()
-    return render_template('index.html',blogs=blogs,current_user=current_user)
+    quotes=get_quotes()
+    print(quotes)
+    return render_template('index.html',current_user=current_user,quotes=quotes)
 
-# @main.route('/blog/<category>')
-# def blog(category):
-#     '''
-#     view root page function that returns index and its data 
-#     '''
-#     blogs=Blog.get_blogs(category)
-#     return render_template('blog.html',blogs=blogs)
+@main.route('/blog/<category>')
+def blog(category):
+    '''
+    view root page function that returns index and its data 
+    '''
+    blogs=Blog.get_blogs(category)
+    return render_template('blog.html',blogs=blogs)
 
 @main.route('/blog/new', methods = ['GET','POST'])
 @login_required
@@ -31,12 +32,13 @@ def new_blog():
     blog_form = BlogForm()
     if blog_form.validate_on_submit():
         title = blog_form.title.data
-        blog = blog_form.text.data
+        blog = blog_form.content.data
         category = blog_form.category.data
         
         new_blog = Blog(blog_title=title,blog_content=blog,category=category,user=current_user)
         
         new_blog.save_blog()
+        
         return redirect(url_for('.index'))
     
     title = 'new blog'
@@ -65,7 +67,7 @@ def update_profile(uname):
             db.session.add(user)
             db.session.commit()
             
-            return redirect(url_for('.profle',uname=user.username))
+            return redirect(url_for('.profile',uname=user.username))
             
         return render_template('/profile/update.html', form = form)
         
@@ -80,27 +82,27 @@ def update_pic(uname):
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
 
-@main.route('/blog/<int:id>', methods = ['GET','POST'])
-def blog(id):
+@main.route('/blog/comment/<int:id>', methods = ['GET','POST'])
+def comment(id):
     blog = Blog.get_blog(id)
-    posted_date = blog_posted_strftime('%b, %d, %Y')
+    posted_date = blog.posted.strftime('%b, %d, %Y')
     
     comment_form = CommentForm()
     comments = Comment.get_comments(blog)
     if comment_form.validate_on_submit():
         comment = comment_form.text.data
         
-        new_comment = Comment(comment=comment,user=current_user,blog_id = blog)
+        new_comment = Comment(comment=comment,username=current_user.username,blog_id = blog)
         
         new_comment.save_comment()
+        return redirect(url_for("main.comment",id=id))
         
-        return render_template('blog.html', comment_form=comment_form, blog=blog, comments=comments, date=posted_date)
+    return render_template('comment.html',comment_form=comment_form,comments=comments)
     
 @main.route('/user/<uname>/blogs')
 def user_blogs(uname):
     user = User.query.filter_by(username=uname).first()
     blogs = Blog.query.filter_by(user_id = user.id).all()
-    blogs_count = Blog.count_blogs(uname)
     user_joined = user.date_joined.strftime('%b %d, %Y')
 
-    return render_template("profile/blog.html", user=user,blogs=blogs,blogs_count=blogs_count,date = user_joined)
+    return render_template("blog.html", user=user,blogs=blogs,date = user_joined)

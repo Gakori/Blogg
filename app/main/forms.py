@@ -5,8 +5,8 @@ from flask_login import current_user
 
 class BlogForm(FlaskForm):
     title = StringField('Blog title', validators=[Required()])
-    text = TextAreaField('Text',validators=[Required()])
-    category = SelectField('Type',choices=[('lifestyle','lifestle blog'),('travel','travel blog'),('healthfitness', 'healthfitness blog'),('fashion','fashion blog'),('food','food bog'),('entertainment','entertainment blog')])
+    content = TextAreaField('Text',validators=[Required()])
+    category = SelectField('Type',choices=[('lifestyle','lifesytle blog'),('travel','travel blog'),('health', 'health blog'),('fashion','fashion blog'),('food','food bog'),('entertainment','entertainment blog')])
     submit = SubmitField('Submit')
     
 class CommentForm(FlaskForm):
