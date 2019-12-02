@@ -6,14 +6,13 @@
 
 ## PROJECT DESCRIPTION
 
-    Blog is an application that enables users to view different types of blogs depending on ones interest.The application also give a chance to the users to post their on blogs,comment on other peoples blog, delete blogs they didnt like and also view different quotes in the same application.
+Blog is an application that enables users to view different types of blogs depending on ones interest.The application also give a chance to the users to post their on blogs,comment on other peoples blog, delete blogs they didnt like and also view different quotes in the same application.
 
 ## SCREENSHOTS
 ![Screenshot](app/static/images/s1.png)
 ![Screenshot](app/static/images/s2.png)
 ![Screenshot](app/static/images/s3.png)
 ![Screenshot](app/static/images/s4.png)
-![Screenshot](app/static/images/s5.png)
 
 ## USER STORIES
 
