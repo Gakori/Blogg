@@ -11,15 +11,18 @@
 
 
 {% block content %}
-  <h1 class="blog" style="font-family: 'Aclonica', sans-serif;; text-align: center;">
+<div class="container" style="background-image: url('https://cdn.pixabay.com/photo/2016/04/20/08/21/entrepreneur-1340649__340.jpg')">
+
+
+  <h1 class="blog" style="font-family: 'Aclonica', sans-serif;; text-align: center; color: white;">
     WELCOME TO BLOG POSTS
   </h1>
 
   <div class="container">
     {% if current_user.is_authenticated %}
-    <a class="blog" style="font-size: 20px; color: black; padding-left: 40%;" href="{{url_for('main.new_blog')}}">START YOUR OWN BLOG</a>
+    <a class="blog" style="font-size: 20px; color: white; padding-left: 40%;" href="{{url_for('main.new_blog')}}">START YOUR OWN BLOG</a>
     {% else %}
-    <a href="{{url_for('auth.login')}}">log in to post</a></p>
+    <a href="{{url_for('auth.login')}}" class="login" style="padding-left: 40%; font-size: 20px;">log in to post</a></p>
     {% endif %}
   </div>
 
@@ -36,7 +39,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <a class="Lifestyle" href="/blog/lifestyle" style="font-size: 30px; text-align: center; font-family: 'Playfair Display SC', serif;
+      <a class="Lifestyle" href="/blog/lifestyle" style="font-size: 30px; text-align: center; color: white; font-family: 'Playfair Display SC', serif;
       ">LIFESTYLE BLOGS</a><br>
       <img
         src="https://cdn.pixabay.com/photo/2014/09/03/20/15/legs-434918__340.jpg" 
@@ -45,7 +48,7 @@
     </div>
 
     <div class="col-md-6">
-        <a class="Lifestyle" href="/blog/travel" style="font-size: 30px; font-family: 'Playfair Display SC', serif;" >TRAVEL BLOGS</a><br>
+        <a class="Lifestyle" href="/blog/travel" style="font-size: 30px; font-family: 'Playfair Display SC', serif; color: white;" >TRAVEL BLOGS</a><br>
       <img
         src="https://cdn.pixabay.com/photo/2017/01/16/15/17/hot-air-balloons-1984308__340.jpg"
         alt=""
@@ -55,7 +58,7 @@
 
   <div class="row">
     <div class="col-md-6">
-        <a class="health" href="/blog/health" style="font-size: 30px; font-family: 'Playfair Display SC', serif;">HEALTH BLOGS</a><br>
+        <a class="health" href="/blog/health" style="font-size: 30px; font-family: 'Playfair Display SC', serif; color: white;">HEALTH BLOGS</a><br>
       <img
         src="https://cdn.pixabay.com/photo/2014/12/20/09/18/running-573762__340.jpg"
         alt=""
@@ -63,7 +66,7 @@
     </div>
 
     <div class="col-md-6">
-        <a class="fashion" href="/app/fashion" style="font-size: 30px; font-family: 'Playfair Display SC', serif;">FASHION BLOGS</a><br>
+        <a class="fashion" href="/app/fashion" style="font-size: 30px; font-family: 'Playfair Display SC', serif; color: white;">FASHION BLOGS</a><br>
       <img
         src="https://cdn.pixabay.com/photo/2015/09/25/04/19/photographer-956676__340.jpg"
         alt=""
@@ -73,7 +76,7 @@
 
   <div class="row">
     <div class="col-md-6">
-        <a class="food" href="/blog/food" style="font-size: 30px; font-family: 'Playfair Display SC', serif;">FOOD BLOGS</a><br>
+        <a class="food" href="/blog/food" style="font-size: 30px; font-family: 'Playfair Display SC', serif; color: white;">FOOD BLOGS</a><br>
       <img
         src="https://cdn.pixabay.com/photo/2015/12/09/17/12/popcorn-1085072__340.jpg" width="520" height="350"
         alt=""
@@ -81,13 +84,14 @@
     </div>
   
     <div class="col-md-6">
-        <a class="entertainment" href="/blog/entertainment" style="font-size: 30px; font-family: 'Playfair Display SC', serif;">ENTERTAINMENT BLOGS</a><br>
+        <a class="entertainment" href="/blog/entertainment" style="font-size: 30px; font-family: 'Playfair Display SC', serif; color: white;">ENTERTAINMENT BLOGS</a><br>
       <img
         src="https://cdn.pixabay.com/photo/2017/07/21/23/57/concert-2527495__340.jpg"
         alt=""
       />
       
     </div>
+</div>
 </div>
 </div>
 
