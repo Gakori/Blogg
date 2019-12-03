@@ -10,9 +10,6 @@ Blog is an application that enables users to view different types of blogs depen
 
 ## SCREENSHOTS
 ![Screenshot](app/static/images/s1.png)
-![Screenshot](app/static/images/s2.png)
-![Screenshot](app/static/images/s3.png)
-![Screenshot](app/static/images/s4.png)
 
 ## USER STORIES
 
