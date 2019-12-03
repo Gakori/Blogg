@@ -5,9 +5,7 @@ class Config:
     
     SECRET_KEY=os.environ.get('SECRET_KEY')
     BASE_URL='http://quotes.stormconsultancy.co.uk/random.json'
-    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://faith:456789@localhost/blogg'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
-    # DATABASE_URL = ('postgresql+psycopg2://faith:456789@localhost/blogg') 
     UPLOADED_PHOTOS_DEST ='app/static/photos'
      
      #email configurations
@@ -20,7 +18,7 @@ class Config:
     SENDER_EMAIL = 'faithgakori506@gmail.com'
     
 class ProdConfig(Config):
-    pass
+    # pass
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 
 class DevConfig(Config):
